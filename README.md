@@ -25,6 +25,20 @@ execution fails. When this happens, the processor will roll back the execution,
 a process referred to as a transactional abort. On a transactional abort, the
 processor will discard all updates performed in the region, restore architectural state
 to appear as if the optimistic execution never occurred, and resume execution nontransactionally.
+
+## Transactional Abort
+
+A primary abort cause is due to conflicting accesses between the transactionally executing logical
+processor and another logical processor. Memory addresses read from within a transactional
+region constitute the **read-set** of the transactional region and addresses
+written to within the transactional region constitute the **write-set** of the transactional
+region. Intel TSX maintains the read- and write-sets **at the granularity of a
+cache line**. A conflicting access occurs if another logical processor
+
+- either reads a location that is part of the transactional region's write-set
+- writes a location that is a part of either the read-set or write-set of the transactional region.
+
+A conflicting access typically means serialization is indeed required for this code region.
   
 ## Check Support
 
