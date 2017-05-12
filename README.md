@@ -61,3 +61,9 @@ Make sure your platform and your gcc supports `-mrtm -mhle` and c++11 std::chron
 - On Linux, GNU glibc 2.18 added support for lock elision of pthread mutexes of PTHREAD_MUTEX_DEFAULT type. Glibc 2.19 added support for elision of read/write mutexes. Whether elision is enabled. depends whether the --enable-lock-elision=yes parameter was set at compilation time of the library.
 - Java JDK 8u20 or later support adaptive elision for synchronized sections when the -XX:+UseRTMLocking option is enabled.
 - Intel Composer XE 2013 SP1 or later supports lock elision for OpenMP omp_lock_t.
+
+### Tutorials
+
+- Intel Architecture Instruction Set Extensions Programming Reference
+- Intel 64 and IA-32 Architectures Optimization Reference Manual
+- [RedHat gcc's new intrinsics for TSX](https://access.redhat.com/documentation/en-US/Red_Hat_Developer_Toolset/2/html/User_Guide/sect-Changes_in_Version_2.0-GCC.html)
