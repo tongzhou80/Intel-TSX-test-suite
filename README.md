@@ -40,7 +40,7 @@ cache line**. A conflicting access occurs if another logical processor
 
 A conflicting access typically means serialization is indeed required for this code region.
   
-## Check Support
+## Check TSX Support
 
 `gcc checktsx.c -o check; ./check`
 
@@ -56,3 +56,8 @@ Make sure your platform and your gcc supports `-mrtm -mhle` and c++11 std::chron
 
 ## Resources
 
+### Existing TSX-enabled Locking Libraries (non-exhaustive)
+
+- On Linux, GNU glibc 2.18 added support for lock elision of pthread mutexes of PTHREAD_MUTEX_DEFAULT type. Glibc 2.19 added support for elision of read/write mutexes. Whether elision is enabled. depends whether the --enable-lock-elision=yes parameter was set at compilation time of the library.
+- Java JDK 8u20 or later support adaptive elision for synchronized sections when the -XX:+UseRTMLocking option is enabled.
+- Intel Composer XE 2013 SP1 or later supports lock elision for OpenMP omp_lock_t.
