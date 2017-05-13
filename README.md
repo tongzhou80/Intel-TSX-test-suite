@@ -60,6 +60,9 @@ Make sure your platform and your gcc supports `-mrtm -mhle` and c++11 std::chron
 
 Option `-c N` specifies the counter to be incremented to 2^N for each thread. A good N should be 10-25.
 
+
+## Performance
+
 My test machine only supports HLE, and the results were strange.
 
 For the single-threaded case, pthread mutex always has better performance by a roughly 200%. Even though pthread mutex lock/unlock is high optimized, this is still a surprising result. Command: `./benchmark -v -t 1 -i 1 -c 24 -b 3`.
