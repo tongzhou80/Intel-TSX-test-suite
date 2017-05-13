@@ -46,13 +46,23 @@ A conflicting access typically means serialization is indeed required for this c
 
 The script checks all ISA extensions introduced in Haswell, only TSX support is relevant for this project.
 
-## Build
+If your machine does not support TSX extensions, you can use [Intel SDE](https://software.intel.com/en-us/articles/intel-software-development-emulator), which has the support but may not really represent a raw peformance.
+
+## Build & Test
 
 Make sure your platform and your gcc supports `-mrtm -mhle` and c++11 std::chrono.
 
 `make -f makefile-counting`
 
 `./benchmark --help`
+
+Option `-c N` specifies the counter to be incremented to 2^N for each thread. A good N should be 10-25.
+
+My test machine only supports HLE, and the results were strange.
+
+For the single-threaded case, pthread mutex always has better performance by a roughly 200%. Even though pthread mutex lock/unlock is high optimized, this is still a surprising result. Command: `./benchmark -v -t 1 -i 1 -c 24 -b 3`.
+
+For multi-threaded case, HLE could slightly outperform mutex. Command: `./benchmark -v -t 8 -i 1 -c 20 -b 3`.
 
 ## Resources
 

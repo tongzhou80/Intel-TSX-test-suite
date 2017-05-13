@@ -16,7 +16,7 @@
 
 /* config options */
 int thread_cnt = 16;
-int thread_inc_times = 1 << 16;
+long long thread_inc_times = 1 << 16;
 int iteropt = 3;
 int tsx_try_times = 10;
 int run_bench = 0x03;
@@ -303,7 +303,7 @@ void parseArgs(int argc, char** argv) {
 
         thread_inc_times = std::pow(2, std::stoi(optarg));
         if (PrintParsingArgs)
-          printf ("each thread increment %d times\n", thread_inc_times);
+          printf ("each thread increment %lld times\n", thread_inc_times);
         break;
       }
 				
