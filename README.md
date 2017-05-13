@@ -5,6 +5,8 @@ This project includes a suite of simple programs to test Intels' TSX extension. 
 - counting.cpp
   - increment a shared counter using pthread mutex and TSX instruction respetively
 
+- more to come!
+
 ## Intel TSX
 
 Intel TSX provides two software interfaces to specify regions of code for transactional execution
